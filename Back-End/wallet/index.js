@@ -31,6 +31,20 @@ app.get('/wallet/:id', async (req, res) => {
   }
 });
 
+// Fungsi Read Transactions (SELECT)
+app.get('/transaction/:id', async (req, res) => {
+  const id = parseInt(req.params.id);
+  const query = 'SELECT * FROM transaction WHERE wallet_id = $1';
+  
+  try {
+    const result = await pool.query(query, [id]);
+    res.json(result.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 // Fungsi Patch (Partial Update)
 app.patch('/wallet/:id', async (req, res) => {
   const Id = req.params.id;
@@ -55,9 +69,9 @@ app.patch('/wallet/:id', async (req, res) => {
 // Fungsi Create (INSERT)
 app.post('/wallet/:id', async (req, res) => {
   const Id = req.params.id;
-  const balance = req.body.balance;
+  // const amount = req.body.amount;
   const query = 'INSERT into transaction (wallet_id, name, description, amount, type) VALUES ($1, $2, $3, $4, $5) RETURNING *;';
-  const {name = "Top-Up", description = "Top-Up Saldo", amount = balance, type = "IN"} = req.body
+  const {name = "Top-Up", description = "Top-Up Saldo", amount, type = "IN"} = req.body
   const values = [Id, name, description, amount, type];
 
   try {
@@ -67,4 +81,8 @@ app.post('/wallet/:id', async (req, res) => {
     console.error(error);
     res.status(500).send('Internal Server Error');
   }
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import toRupiah from "../hooks/Rupiah";
 
-export default function Saldo({ name, saldo, navigation }) {
+export default function Saldo({ id, name, saldo, navigation }) {
     //   const [hide, setHide] = useState(false);
   // IF ELSE =>
   // IF (condition){
@@ -17,12 +17,12 @@ export default function Saldo({ name, saldo, navigation }) {
       <View style={styles.cardContainer}>
         <Text style={{ fontWeight: "bold" }}>Hi {name}, saldo anda :</Text>
         <Text style={{ fontSize: 20, fontWeight: "bold" }}>{toRupiah(saldo)}</Text>
-        {saldo == 0 ? (
+        {saldo == 0|| saldo == null ? (
           <Text style={{ color: "red" }}>segera isi saldo anda</Text>
         ) : (
           <View style={{ height: 10 }}></View>
         )}
-        <TouchableOpacity onPress={() => navigation.navigate('Topup')}
+        <TouchableOpacity onPress={() => navigation.navigate('Topup', { id: id })}
           style={styles.topupButton}
         >
           <Text style={{ textAlign: "center", color: "white"}}>Top Up</Text>
