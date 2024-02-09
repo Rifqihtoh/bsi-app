@@ -18,8 +18,8 @@ langkah-langkah untuk menjalankan case study:
 6. Done!
 
 Catatan: Apabila terjadi error pada saat menjalankan project, kemungkinan
-terdapat beberapa depedencies yang perlu di-install terlebih dahulu
-untuk depedencies yang perlu di-install dapat dilihat pada 
+terdapat beberapa depedencies yang perlu di-install terlebih dahulu.
+Untuk depedencies yang perlu di-install dapat dilihat pada 
 wrap-up materi bootcamp di github berikut:
 https://github.com/aqigif/bsi-app
 
