@@ -1,52 +1,132 @@
-import React from "react";
-import { View, Text, Button, TextInput, FlatList } from "react-native";
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { addNote, removeNote, editNote } from "../hooks/action";
+// components/NoteForm.js
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addNote, deleteNote, editNote } from "../hooks/action";
+import { View, TextInput, Button, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-export default function IntegrasiRedux() {
+const IntegrasiRedux = () => {
+  const [noteText, setNoteText] = useState("");
+  const dispatch = useDispatch();
+  const notes = useSelector((state) => state.notes);
+  const [editedNote, setEditedNote] = useState("");
+  const [editingIndex, setEditingIndex] = useState(null);
 
-    const [note, setNote] = useState("");
-    const [newText, setNewtext] = useState([]);
-    const dispatch = useDispatch();
-    const notes = useSelector(state => state.notes);
-
-    const handleAddNote = () => {
-        if (note === "") {
-            return;
-        }
-        dispatch(addNote(note));
-        setNote("");
+  const handleAddNote = () => {
+    if (noteText.trim() !== "") {
+      dispatch(addNote(noteText));
+      setNoteText("");
     }
+  };
 
-    const handleRemoveNote = (index) => {
-        dispatch(removeNote(index));
+  const handleDeleteNote = (index) => {
+    dispatch(deleteNote(index));
+    console.log(index);
+  };
+
+  const handleEditNote = (index) => {
+    setEditedNote(notes[index]);
+    setEditingIndex(index);
+  };
+
+  const handleSaveEdit = () => {
+    if (editedNote !== "") {
+      dispatch(editNote(editingIndex, editedNote));
+      setEditedNote("");
+      setEditingIndex(null);
     }
+  };
 
-    const handleEditNote = (index, newText) => {
-        if (newText === "") {
-            return;
-        }
-        dispatch(editNote(index, newText));
-    }
-
-    return (
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center", gap: 10 }}>
-            <Text style={{ fontSize: 20 }}>Integrasi Redux Notes:App</Text>
-            <TextInput
-                style={{ height: 40, borderColor: 'gray', borderWidth: 1, width: 200, marginTop: 20, textAlign: "center" }}
-                placeholder="Enter Note"
-                value={note}
-                onChangeText={(text) => setNote(text)}
-            />
-            <Button title="Add Note" onPress={handleAddNote} />
-            <View style={{ marginTop: 20, flexDirection: "column", gap: 10, borderColor: 'gray', borderWidth: 1 }}>
-                <FlatList
-                    data={notes}
-                    keyExtractor={(item, index) => index.toString()}
-                    renderItem={({ item }) => <Text>{item}</Text>}
-                />
+  return (
+    <View style={{ flex: 1, padding: 20, marginBottom: 20 }}>
+      <View style={{ marginBottom: 20 }}>
+        <TextInput
+          style={styles.input}
+          placeholder="Type your note here"
+          value={noteText}
+          onChangeText={(text) => setNoteText(text)}
+        />
+        <TouchableOpacity style={styles.button} title="Add Note" onPress={handleAddNote}>
+          <Text style={styles.buttonText}>Add Note</Text>
+        </TouchableOpacity>
+        <View>
+          {notes.map((note, index) => (
+            <View key={index} style={styles.noteContainer}>
+              {editingIndex === index ? (
+                <View style={styles.editContainer}>
+                  <TextInput
+                    style={styles.input}
+                    onChangeText={setEditedNote}
+                    value={editedNote}
+                    placeholder="Edit your note"
+                  />
+                  <Button title="Save" onPress={handleSaveEdit} />
+                </View>
+              ) : (
+                <>
+                  <Text style={styles.noteItem}>{note}</Text>
+                  <Button title="Edit" onPress={() => handleEditNote(index)} />
+                  <Button
+                    title="Delete"
+                    onPress={() => dispatch(handleDeleteNote(index))}
+                  />
+                </>
+              )}
             </View>
+          ))}
         </View>
-    )
-}
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 20,
+  },
+  title: {
+    fontSize: 24,
+    marginBottom: 20,
+  },
+  noteContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+    gap: 10,
+  },
+  noteItem: {
+    flex: 1,
+    fontSize: 16,
+    borderColor: "gray",
+    borderWidth: 1,
+
+  },
+  editContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  input: {
+    flex: 1,
+    height: 40,
+    borderColor: "gray",
+    borderWidth: 1,
+    paddingHorizontal: 10,
+  },
+  button: {
+    backgroundColor: "#2196F3",
+    color: "white",
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 10,
+    marginBottom: 20,
+  },
+  buttonText: {
+    color: "white",
+    textAlign: "center",
+  }
+});
+
+export default IntegrasiRedux;

@@ -45,9 +45,9 @@ export const editNote = (index, newText) => {
     }
 }
 
-export const removeNote = (index) => {
+export const deleteNote = (index) => {
     return {
         type: 'REMOVE_NOTE',
-        payload: index
+        payload: {index}
     }
 }

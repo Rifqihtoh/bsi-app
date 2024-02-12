@@ -23,7 +23,7 @@ const rootReducer = (state = initialState, action) => {
         case 'EDIT_NOTE':
             return { ...state, notes: state.notes.map((note, index) => index === action.payload.index ? action.payload.newText : note) }
         case 'REMOVE_NOTE':
-            return { ...state, notes: state.notes.filter((note, index) => index !== action.payload) }
+            return { ...state, notes: state.notes.filter((note, index) => index !== action.payload.index) }
         default:
             return state
     }
