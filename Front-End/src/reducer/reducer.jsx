@@ -20,6 +20,10 @@ const rootReducer = (state = initialState, action) => {
             return { ...state, count: state.count / 2 };
         case 'ADD_NOTE':
             return { ...state, notes: [...state.notes, action.payload] };
+        case 'EDIT_NOTE':
+            return { ...state, notes: state.notes.map((note, index) => index === action.payload.index ? action.payload.newText : note) }
+        case 'REMOVE_NOTE':
+            return { ...state, notes: state.notes.filter((note, index) => index !== action.payload) }
         default:
             return state
     }

@@ -37,3 +37,17 @@ export const addNote = (note) => {
         payload: note
     }
 }
+
+export const editNote = (index, newText) => {
+    return {
+        type: 'EDIT_NOTE',
+        payload: { index, newText }
+    }
+}
+
+export const removeNote = (index) => {
+    return {
+        type: 'REMOVE_NOTE',
+        payload: index
+    }
+}
