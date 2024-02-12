@@ -1,6 +1,6 @@
 // components/HomeScreen.js
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, ScrollView } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
   return (
@@ -54,6 +54,10 @@ const HomeScreen = ({ navigation }) => {
       <Button
         title="Go to Integrasi Redux"
         onPress={() => navigation.navigate('Integrasi-Redux')}
+      />
+      <Button
+        title="Go to Fetch Api"
+        onPress={() => navigation.navigate('FAPI')}
       />
     </View>
   );
