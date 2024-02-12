@@ -20,6 +20,7 @@ import AxiosPostScreen from "./screens/network/AxiosPost";
 import Landing1 from "./screens/Landing1";
 import Topup from "./screens/Topup";
 import ReduxConcept from "./screens/reduxConcept";
+import IntegrasiRedux from "./screens/integrasiRedux";
 
 const Stack = createStackNavigator();
 
@@ -47,6 +48,7 @@ export default function AppSrc() {
           <Stack.Screen name="Landing" component={Landing1} />
           <Stack.Screen name="Topup" component={Topup} />
           <Stack.Screen name="Redux" component={ReduxConcept} />
+          <Stack.Screen name="Integrasi-Redux" component={IntegrasiRedux} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

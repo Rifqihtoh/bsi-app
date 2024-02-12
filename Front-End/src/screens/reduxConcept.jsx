@@ -4,10 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement, multi2, div2, reset } from "../hooks/action";
 
 export default function ReduxConcept() {
-
+    
     const count = useSelector(state => state.count);
     const dispatch = useDispatch();
-
     const handleIncrement = () => {
         dispatch(increment());
     }
@@ -32,7 +31,7 @@ export default function ReduxConcept() {
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
             <Text style={{ fontSize: 20 }}>Redux Concept Counter App</Text>
             <Text style={{ fontSize: 48 }}>Count: {count}</Text>
-            <View style={{ marginTop: 20, flexDirection: "row" }}>
+            <View style={{ marginTop: 20, flexDirection: "column", gap: 10 }}>
                 <Button title="Increment" onPress={handleIncrement} />
                 <Button title="Decrement" onPress={handleDecrement} />
                 <Button title="Multi2" onPress={handleMulti2} />

@@ -1,4 +1,5 @@
 //action.jsx
+// import {ADD_NOTE} from "../type/type"
 
 export const increment = () => {
     return {
@@ -28,4 +29,11 @@ export const reset = () => {
     return {
         type: "RESET",
     };
+}
+
+export const addNote = (note) => {
+    return {
+        type: 'ADD_NOTE',
+        payload: note
+    }
 }

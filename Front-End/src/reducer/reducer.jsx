@@ -1,7 +1,9 @@
 //reducer.jsx
+// import {ADD_NOTE} from "../type/type"
 
 const initialState = {
     count: 0,
+    notes: [],
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -16,5 +18,11 @@ const rootReducer = (state = initialState, action) => {
             return { ...state, count: state.count * 2 };
         case "DIV2":
             return { ...state, count: state.count / 2 };
+        case 'ADD_NOTE':
+            return { ...state, notes: [...state.notes, action.payload] };
+        default:
+            return state
     }
 }
+
+export default rootReducer;

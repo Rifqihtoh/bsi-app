@@ -1,0 +1,6 @@
+const INCREMENT = "INCREMENT";
+const DECREMENT = "DECREMENT";
+const MULTI2 = "MULTI2";
+const DIV2 = "DIV2";
+const RESET = "RESET";
+const ADD_NOTE = "ADD_NOTE";
