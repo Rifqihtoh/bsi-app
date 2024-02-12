@@ -8,8 +8,8 @@ untuk menjalankan case study dengan react native, terdapat beberapa tools yang h
 4. Postman (opsional, namun sangat disarankan untuk pengecekan API)
 5. Postgresql (Wajib)
 6. PGAdmin (Wajib)
-Adapun pengoperasian case study sebagai berikut:
 
+Adapun pengoperasian case study sebagai berikut:
 1. Import file 'bsi_app.sql' pada postgres dengan menggunakan PGAdmin
 2. jalankan server back-end pada folder: "Back-End/wallet/" dengan command: nodemon index.js
 3. jalankan server front-end pada folder "Front-End" dengan npm run web
