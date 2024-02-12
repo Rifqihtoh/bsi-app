@@ -27,7 +27,7 @@ const fetchApi = () => {
   <View style={{flex: 1, padding: 24}}>
     {isLoading ? (
         <ActivityIndicator />
-    ): (
+    ) : (
         <FlatList
             data={data}
             keyExtractor={({ id }) => id}
