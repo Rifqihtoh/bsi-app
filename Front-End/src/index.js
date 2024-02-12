@@ -19,6 +19,7 @@ import FetchPostScreen from "./screens/network/FetchPost";
 import AxiosPostScreen from "./screens/network/AxiosPost";
 import Landing1 from "./screens/Landing1";
 import Topup from "./screens/Topup";
+import ReduxConcept from "./screens/reduxConcept";
 
 const Stack = createStackNavigator();
 
@@ -32,7 +33,7 @@ export default function AppSrc() {
       {/* <BasicFL /> */}
       {/* <FlexBox /> */}
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Landing">
+        <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Details" component={DetailsScreen} />
           <Stack.Screen name="One" component={OneScreen} />
@@ -45,6 +46,7 @@ export default function AppSrc() {
           <Stack.Screen name="Axios-Post" component={AxiosPostScreen} />
           <Stack.Screen name="Landing" component={Landing1} />
           <Stack.Screen name="Topup" component={Topup} />
+          <Stack.Screen name="Redux" component={ReduxConcept} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
