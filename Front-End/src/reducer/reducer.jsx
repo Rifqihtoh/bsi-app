@@ -1,32 +1,83 @@
-//reducer.jsx
-// import {ADD_NOTE} from "../type/type"
+import { FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_REQUEST, FETCH_PRODUCTS_FAILURE } from "../type/type";
+// Actions
+const INCREMENT = "INCREMENT";
+const DECREMENT = "DECREMENT";
 
+// Action creators
+export const increment = () => ({
+    type: INCREMENT,
+})
+
+export const decrement = () => ({
+    type: DECREMENT,
+})
+
+
+
+// Initial state
 const initialState = {
-    count: 0,
+    counter: 0,
     notes: [],
+    products: [],
+    loading: false,
+    error: ''
 }
 
+// Root reducer
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "INCREMENT":
-            return { ...state, count: state.count + 1 };
-        case "DECREMENT":
-            return { ...state, count: state.count - 1 };
-        case "RESET":
-            return { ...state, count: 0 };
-        case "MULTI2":
-            return { ...state, count: state.count * 2 };
-        case "DIV2":
-            return { ...state, count: state.count / 2 };
+        case INCREMENT:
+            return {
+                ...state,
+                counter: state.counter + 1
+            }
+        case DECREMENT:
+            return {
+                ...state,
+                counter: state.counter - 1
+            }
         case 'ADD_NOTE':
             return { ...state, notes: [...state.notes, action.payload] };
+        case 'DELETE_NOTE':
+        const newNotes = state.notes.filter((note, index) => index !== action.payload);
+        return {
+            ...state,
+            notes: newNotes
+        };
         case 'EDIT_NOTE':
-            return { ...state, notes: state.notes.map((note, index) => index === action.payload.index ? action.payload.newText : note) }
-        case 'REMOVE_NOTE':
-            return { ...state, notes: state.notes.filter((note, index) => index !== action.payload.index) }
+            const { index, newText } = action.payload;
+            const updatedNotes = state.notes.map((note, idx) => {
+                if (idx === index) {
+                return newText;
+                }
+                return note;
+            });
+            return {
+                ...state,
+                notes: updatedNotes
+        };
+        case FETCH_PRODUCTS_REQUEST:
+        return {
+            ...state,
+            loading: true
+        };
+        case FETCH_PRODUCTS_SUCCESS:
+        return {
+            ...state,
+            loading: false,
+            products: action.payload,
+            error: ''
+        };
+        case FETCH_PRODUCTS_FAILURE:
+        return {
+            ...state,
+            loading: false,
+            products: [],
+            error: action.payload
+        };
         default:
             return state
     }
 }
 
-export default rootReducer;
+export default rootReducer

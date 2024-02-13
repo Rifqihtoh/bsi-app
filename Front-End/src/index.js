@@ -21,7 +21,7 @@ import Landing1 from "./screens/Landing1";
 import Topup from "./screens/Topup";
 import ReduxConcept from "./screens/reduxConcept";
 import IntegrasiRedux from "./screens/integrasiRedux";
-import fetchApi from "./screens/fetchApi";
+import IntegrateFetchAPI from "./screens/fetchApi";
 
 const Stack = createStackNavigator();
 
@@ -50,7 +50,7 @@ export default function AppSrc() {
           <Stack.Screen name="Topup" component={Topup} />
           <Stack.Screen name="Redux" component={ReduxConcept} />
           <Stack.Screen name="Integrasi-Redux" component={IntegrasiRedux} />
-          <Stack.Screen name="FAPI" component={fetchApi} />
+          <Stack.Screen name="FAPI" component={IntegrateFetchAPI} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

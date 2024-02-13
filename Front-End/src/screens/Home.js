@@ -4,8 +4,9 @@ import { View, Text, Button, ScrollView } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', gap: 10 }}>
-      <Text>Home Screen</Text>
+    <ScrollView>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', gap: 10 }}>
+      {/* <Text>Home Screen</Text>
       <Button
         title="Go to Details"
         onPress={() => navigation.navigate('Details')}
@@ -22,7 +23,7 @@ const HomeScreen = ({ navigation }) => {
       <Button
         title="Go to Promise"
         onPress={() => navigation.navigate('Promise')}
-      />
+      /> */}
       <Text>Networking</Text>
       <Button
         title="Go to Fetch"
@@ -60,6 +61,7 @@ const HomeScreen = ({ navigation }) => {
         onPress={() => navigation.navigate('FAPI')}
       />
     </View>
+    </ScrollView>
   );
 };
 
