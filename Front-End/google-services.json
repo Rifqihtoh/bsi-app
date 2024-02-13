@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "662016335786",
+    "project_id": "test1-50b58",
+    "storage_bucket": "test1-50b58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662016335786:android:b8e6ad145479d55f9915d3",
+        "android_client_info": {
+          "package_name": "com.rakamin.bsiapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUp5NaZfPjIgvk196hSKKDJg6SkD1rXVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

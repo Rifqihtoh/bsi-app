@@ -18,10 +18,10 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.rakamin.bsiapp",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff",
-        "package": "com.bsiapp"
+        "backgroundColor": "#ffffff"
       }
     },
     "web": {
